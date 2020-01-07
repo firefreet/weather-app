@@ -49,7 +49,7 @@ How do you deliver this? Here are some guidelines:
 
   * Humidity
 
-![weather dashboard](./Assets/06-Server-Side-APIs-homework-demo.png)
+![weather dashboard](./Assets/images/06-Server-Side-APIs-homework-demo.png)
 
 
 ### Hints

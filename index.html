@@ -4,13 +4,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- boostrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
     <title>Weather App</title>
 </head>
-
 <body>
+    <!--  -->
     <div class="container-fluid">
         <div class="row bg-dark">
             <h1 class="text-center w-100 text-white">
@@ -22,10 +22,12 @@
                 <div class="row">
                     <label for="search-btn">Search for a City:</label>
                     <form class="input-group mb-3">
-                        <input type="text" class="form-control" id="searchCity" placeholder="enter city name" aria-label="city-search"
-                            aria-describedby="search-btn">
+                        <input type="text" class="form-control" id="searchCity" placeholder="enter city name"
+                            aria-label="city-search" aria-describedby="search-btn">
                         <div class="input-group-append">
-                            <button class="input-group-text btn-primary bg-primary text-white" id="search-btn"><i class="fas fa-search"></i></button>
+                            <button class="input-group-text btn-primary bg-primary text-white" id="search-btn">
+                                <i class="fas fa-search"></i>
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -37,14 +39,12 @@
                                     data-target="#prevCities" aria-controls="prevCities" aria-expanded="false"
                                     aria-label="Toggle navigation">
                                     <span class="navbar-toggler-icon"></span>
-                                </button>    
+                                </button>
                                 <h5 class="pl-1 my-auto">Past 10 Cities</h5>
                             </div>
                             <div class="d-flex flex-row">
                                 <div class="collapse navbar-collapse" id="prevCities">
                                     <ul class="navbar-nav flex-column w-100" id="prevCitiesList">
-                                        <!-- <li class="nav-item list-group-item w-100 my-1" data-prevCity="1">
-                                        </li> -->
                                     </ul>
                                 </div>
                             </div>
@@ -74,6 +74,7 @@
                         <div class="row mx-1">
                             <h5>5-Day Forecast (noon):</h5>
                         </div>
+                        <!-- plan to replace 1-4 with js elements  -->
                         <div class="row text-white">
                             <div class="col-12 col-sm my-2">
                                 <div class="card bg-primary">
@@ -131,6 +132,7 @@
             </div>
         </div>
     </div>
+    <!-- javascript links for special icons, jquery, popper, bootstrap, and custom script-->
     <script src="https://kit.fontawesome.com/ceb7ababc1.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
@@ -139,7 +141,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
-    <script src="assets/script.js"></script>
+    <script src="assets/js/script.js"></script>
 </body>
 
 </html>
