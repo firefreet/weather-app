@@ -67,7 +67,7 @@ $(document).ready(function () {
                 localStorage.setItem("cities", JSON.stringify(cities));   
                 populateCities();
                 $("#searchCity").val("")
-                $("#card-today>.city-display").html(RespCity + " (" + today + ")<img src=http://openweathermap.org/img/wn/" + resp.weather[0].icon + ".png>")
+                $("#card-today>.city-display").html(RespCity + " (" + today + ")<img src=http://openweathermap.org/img/wn/" + resp.weather[0].icon + ".png>").hide().fadeIn()
                 $("#card-today>.temp-display").text("Temperature: " + parseInt(resp.main.temp_min) + dgr)
                 $("#card-today>.humid-display").text("Humidity: " + resp.main.humidity + " %")
                 $(".wind-display").text("Wind Speed: " + resp.wind.speed + " MPH")
@@ -95,10 +95,10 @@ $(document).ready(function () {
                     for (i = 0; i < 5; i++) {
                         e = 3 + (i*8)
                         curCard = "#card-" + i + ">."
-                        $(curCard + "date-display").text(days[e].dt_txt.substr(0, 10))
-                        $(curCard + "thumb-display").attr("src","http://openweathermap.org/img/wn/" + days[e].weather[0].icon + ".png")
-                        $(curCard + "temp-display").text("Temp: " + parseInt(days[e].main.temp) + dgr)
-                        $(curCard + "humid-display").text("Humidity: " + days[e].main.humidity + " %")
+                        $(curCard + "date-display").text(days[e].dt_txt.substr(0, 10)).hide().fadeIn()
+                        $(curCard + "thumb-display").attr("src","http://openweathermap.org/img/wn/" + days[e].weather[0].icon + ".png").hide().fadeIn()
+                        $(curCard + "temp-display").text("Temp: " + parseInt(days[e].main.temp) + dgr).hide().fadeIn()
+                        $(curCard + "humid-display").text("Humidity: " + days[e].main.humidity + " %").hide().fadeIn()
                     }
                 })
             }
