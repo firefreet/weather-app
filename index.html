@@ -10,15 +10,20 @@
     <title>Weather App</title>
 </head>
 <body>
-    <!--  -->
+    <!-- container for the whole page, entire width of window -->
     <div class="container-fluid">
+        <!-- header row with dark background -->
         <div class="row bg-dark">
+            <!-- page title -->
             <h1 class="text-center w-100 text-white">
                 Weather Dashboard
             </h1>
         </div>
+        <!-- row for everything else -->
         <div class="row px-2">
+            <!-- search input and history in left side bar -->
             <div class="col-12 col-sm-3 bg-light">
+                <!-- text search input section with label, text input, and search button -->
                 <div class="row">
                     <label for="search-btn">Search for a City:</label>
                     <form class="input-group mb-3">
@@ -31,10 +36,14 @@
                         </div>
                     </form>
                 </div>
+                <!-- container for list of previous city buttons -->
                 <div class="row">
+                    <!-- bootsrap css to collapse at the small breakpoint -->
                     <nav class="navbar navbar-expand-sm navbar-light bg-light w-100">
                         <div class="flex-column w-100">
+                            <!-- row for toggle button and list title -->
                             <div class="d-flex flex-row">
+                                <!-- bootstap toggle button to appear when nav collapses -->
                                 <button class="navbar-toggler align-top" type="button" data-toggle="collapse"
                                     data-target="#prevCities" aria-controls="prevCities" aria-expanded="false"
                                     aria-label="Toggle navigation">
@@ -42,8 +51,10 @@
                                 </button>
                                 <h5 class="pl-1 my-auto">Past 10 Cities</h5>
                             </div>
+                            <!-- row for previous city button, toggled by button below small break point and displayed normally above it -->
                             <div class="d-flex flex-row">
                                 <div class="collapse navbar-collapse" id="prevCities">
+                                    <!-- container for buttons list -->
                                     <ul class="navbar-nav flex-column w-100" id="prevCitiesList">
                                     </ul>
                                 </div>
@@ -52,10 +63,13 @@
                     </nav>
                 </div>
             </div>
+            <!-- column for displaying searched weather data on the right above the small break point and at the bottom below it -->
             <div class="col-12 col-sm-9">
+                <!-- row and card for current weather display -->
                 <div class="row">
                     <div class="card w-100 m-4">
                         <div class="card-body" id="card-today">
+                            <!-- containers for City Name, temp, Feels like temp, humidity wind speed -->
                             <h3 class="card-title w-100 city-display">City...</h3>
                             <p class="card-text temp-display"></p>
                             <p class="card-text feels-display"></p>
@@ -63,19 +77,23 @@
                             <p class="card-text wind-display"></p>
                             <div class="card-text uv-display">
                                 <p class="float-left">UV rating: </p>
+                                <!-- UV index displayed in button like element -->
                                 <div class="float-left ml-1 btn-sm">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <!-- row for 5 day forecast -->
                 <div class="row" id="forecast" style="font-size: small;">
                     <div class="container-fluid mx-2">
+                        <!-- Forecast title section -->
                         <div class="row mx-1">
                             <h5>5-Day Forecast (noon):</h5>
                         </div>
-                        <!-- plan to replace 1-4 with js elements  -->
+                        <!-- row for 5 days of forecast cards -->
                         <div class="row text-white">
+                            <!-- columns to space cards above small breakpoint and fill row below breakpoint -->
                             <div class="col-12 col-sm my-2">
                                 <div class="card bg-primary">
                                     <div class="card-body p-1" id="card-0">
