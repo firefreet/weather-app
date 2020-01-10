@@ -58,6 +58,8 @@ $(document).ready(function () {
 
     function populateWeather(city) {
         // set base api urls
+        console.log(city)
+        var normalCity = normalCase(city)
         var currentDataUrl = "https://api.openweathermap.org/data/2.5/weather?appid=489be95ab09e31557d4086ee27619db6&units=imperial&q=" + city
         var futureDataUrl = "https://api.openweathermap.org/data/2.5/forecast?appid=489be95ab09e31557d4086ee27619db6&units=imperial&q=" + city
         var uvDataUrl = "https://api.openweathermap.org/data/2.5/uvi?appid=489be95ab09e31557d4086ee27619db6"
@@ -82,16 +84,14 @@ $(document).ready(function () {
             success: function (resp) {
                 // get longituted and latitude coords to call UV index api
                 uvDataUrl = uvDataUrl + "&lat=" + resp.coord.lat + "&lon=" + resp.coord.lon
-                // get city name from response (so display can be correct case)
-                RespCity = resp.name
                 // if city is already in list of previous cities, move it to the top of the array/list
-                
-                if($.inArray(RespCity,cities) !== -1) {
-                    cities.splice($.inArray(RespCity,cities),1);
-                    cities.unshift(RespCity);
+                // console.log($.inArray(normalCity,cities))
+                if($.inArray(normalCity,cities) !== -1) {
+                    cities.splice($.inArray(normalCity,cities),1);
+                    cities.unshift(normalCity);
                 } 
                 // other wise just put it at the top of the list
-                else {cities.unshift(RespCity)}
+                else {cities.unshift(normalCity)}
                 // cap the list at 10 entries
                 cities = cities.slice(0, 10);
                 // save the list to local storageu
@@ -102,7 +102,7 @@ $(document).ready(function () {
                 $("#searchCity").val("")
                 // populate current day's weather with ...
                 // City name, date, current weather icon
-                $("#card-today>.city-display").html(RespCity + " (" + today + ")<img src=http://openweathermap.org/img/wn/" + resp.weather[0].icon + ".png>").hide().fadeIn()
+                $("#card-today>.city-display").html(normalCity + " (" + today + ")<img src=http://openweathermap.org/img/wn/" + resp.weather[0].icon + ".png>").hide().fadeIn()
                 // Temperature
                 $("#card-today>.temp-display").text("Temperature: " + parseInt(resp.main.temp_min) + degreeSign)
                 // Humitidy
@@ -152,5 +152,22 @@ $(document).ready(function () {
                 })
             }
         })
+    }
+// function to title case strings
+    function normalCase(string) {
+        // splits strings into array of seperate words
+        var words = string.split(" ")
+        // goes through each word
+        words.forEach(function(item,index,array){
+            // capitalize first letter
+            array[index] = array[index].substr(0,1).toUpperCase() + array[index].substr(1,array[index].length - 1) 
+            for(var iter = 1; iter < array[index].length; iter++) {
+                // lower case all other letters
+                array[index] = array[index].substr(0,iter) + array[index].substr(iter,1).toLowerCase() + array[index].substr(iter + 1,array[index].length)
+            }
+        })
+        // put words back into one string
+        words = words.join(" ")
+        return words
     }
 })
