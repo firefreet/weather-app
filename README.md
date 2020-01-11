@@ -22,6 +22,8 @@ A weather dashboard application with search functionality to find current weathe
   * Icon image (visual representation of weather conditions)
   * Temperature
   * Humidity
+  
+ * Users can click the 'locate' button to get weather for the current location
 
 https://firefreet.github.io/weather-app/
 
