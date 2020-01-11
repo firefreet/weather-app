@@ -24,3 +24,5 @@ A weather dashboard application with search functionality to find current weathe
   * Humidity
 
 https://firefreet.github.io/weather-app/
+
+[weather-app.png](weather-app.png)
