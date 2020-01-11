@@ -13,7 +13,7 @@
     <title>Weather App</title>
 </head>
 
-<body>
+<body class="uk-background-cover"  uk-height-viewport="offset-top: true"  style="background-image: url(Assets/images/nature-sky-clouds-blue-53594.jpg);">
     <!-- container for the whole page, entire width of window -->
     <div class="container-fluid">
         <!-- header row with dark background -->
@@ -26,9 +26,9 @@
         <!-- row for everything else -->
         <div class="row px-2">
             <!-- search input and history in left side bar -->
-            <div class="col-12 col-sm-3 bg-light">
+            <div class="col-12 col-sm-3 bg-light mt-4">
                 <!-- text search input section with label, text input, and search button -->
-                <div class="row">
+                <div class="row p-2">
                     <label for="search-btn">Search for a City:</label>
                     <form class="input-group mb-3">
                         <input type="text" class="form-control" id="searchCity" placeholder="enter city name"
@@ -36,6 +36,9 @@
                         <div class="input-group-append">
                             <button class="input-group-text btn-primary bg-primary text-white" id="search-btn">
                                 <i class="fas fa-search"></i>
+                            </button>
+                            <button class="input-group-text btn-primary bg-primary text-white ml-1" id="locate-btn">
+                                <i class="far fa-compass"></i>
                             </button>
                         </div>
                     </form>
