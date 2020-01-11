@@ -25,4 +25,4 @@ A weather dashboard application with search functionality to find current weathe
 
 https://firefreet.github.io/weather-app/
 
-![weather-app.png](weather-app.png)
+![weather-app.png](Assets/images/weather-app.png)
