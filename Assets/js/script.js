@@ -16,9 +16,10 @@ $(document).ready(function () {
         } else {
             populateWeather(cities[0]);
         };
+        // on page load, call function to display previous list of cities searched
+        populateCities();
     };
-    // on page load, call function to display previous list of cities searched
-    populateCities();
+
 
     // set cursor into the search text box
     $('#searchCity').focus();
@@ -38,7 +39,7 @@ $(document).ready(function () {
     // function to get current coordinates
     function getCurrentLocation() {
         // prevent form submission
-        if(event) {
+        if (event) {
             event.preventDefault();
         }
         // api to get coords
@@ -70,11 +71,11 @@ $(document).ready(function () {
     function reSearchWeather() {
         // take city name from clicked button in 'previous' list
         // and pass to function to perform ajax calls and display weather
-        if($(this).text() === "Current Location") {
+        if ($(this).text() === "Current Location") {
             getCurrentLocation()
         } else {
             populateWeather($(this).text());
-    
+
         }
         // set attributes on previous list of cities to ensure 
         // it is collapsed when on a small display
@@ -146,7 +147,7 @@ $(document).ready(function () {
                 }
                 // other wise just put it at the top of the list
                 else {
-                    cities.unshift(normalCity); 
+                    cities.unshift(normalCity);
                 };
                 // cap the list at 10 entries
                 cities = cities.slice(0, 10);
