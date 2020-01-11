@@ -159,7 +159,7 @@ $(document).ready(function () {
                 $("#searchCity").val("");
                 // populate current day's weather with ...
                 // City name, date, current weather icon
-                $("#card-today>.city-display").html(normalCity + " (" + today + ")<img src=http://openweathermap.org/img/wn/" + resp.weather[0].icon + ".png>").hide().fadeIn();
+                $("#card-today>.city-display").html(normalCity + " (" + today + ")<img src=https://openweathermap.org/img/wn/" + resp.weather[0].icon + ".png>").hide().fadeIn();
                 // Temperature
                 $("#card-today>.temp-display").text("Temperature: " + parseInt(resp.main.temp_min) + degreeSign);
                 // Humitidy
@@ -202,7 +202,7 @@ $(document).ready(function () {
                         curCard = "#card-" + i + ">.";
                         // populate the Date, Weather icon, Temperature, and Humidity
                         $(curCard + "date-display").text(days[noon].dt_txt.substr(0, 10)).hide().fadeIn();
-                        $(curCard + "thumb-display").attr("src", "http://openweathermap.org/img/wn/" + days[noon].weather[0].icon + ".png").hide().fadeIn();
+                        $(curCard + "thumb-display").attr("src", "https://openweathermap.org/img/wn/" + days[noon].weather[0].icon + ".png").hide().fadeIn();
                         $(curCard + "temp-display").text("Temp: " + parseInt(days[noon].main.temp) + degreeSign).hide().fadeIn();
                         $(curCard + "humid-display").text("Humidity: " + days[noon].main.humidity + " %").hide().fadeIn();
                     };
