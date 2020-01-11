@@ -7,8 +7,12 @@
     <!-- boostrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="Assets/css/uikit.min.css" />
+    <script src="Assets/js/uikit.min.js"></script>
+    <script src="Assets/js/uikit-icons.min.js"></script>
     <title>Weather App</title>
 </head>
+
 <body>
     <!-- container for the whole page, entire width of window -->
     <div class="container-fluid">
@@ -37,9 +41,9 @@
                     </form>
                 </div>
                 <!-- container for list of previous city buttons -->
-                <div class="row">
+                <div class="row d-none">
                     <!-- bootsrap css to collapse at the small breakpoint -->
-                    <nav class="navbar navbar-expand-sm navbar-light bg-light w-100">
+                    <nav class="navbar navbar-expand-sm navbar-light uk-background-muted w-100">
                         <div class="flex-column w-100">
                             <!-- row for toggle button and list title -->
                             <div class="d-flex flex-row">
@@ -49,7 +53,7 @@
                                     aria-label="Toggle navigation">
                                     <span class="navbar-toggler-icon"></span>
                                 </button>
-                                <h5 class="pl-1 my-auto">Past 10 Cities</h5>
+                                <h5 class="pl-1 my-auto">Past Cities</h5>
                             </div>
                             <!-- row for previous city button, toggled by button below small break point and displayed normally above it -->
                             <div class="d-flex flex-row">
@@ -67,15 +71,15 @@
             <div class="col-12 col-sm-9">
                 <!-- row and card for current weather display -->
                 <div class="row">
-                    <div class="card w-100 m-4">
+                    <div class="card uk-background-muted w-100 m-4">
                         <div class="card-body" id="card-today">
                             <!-- containers for City Name, temp, Feels like temp, humidity wind speed -->
-                            <h3 class="card-title w-100 city-display">City...</h3>
+                            <h3 class="card-title w-100 city-display">&lt;- Search City</h3>
                             <p class="card-text temp-display"></p>
                             <p class="card-text feels-display"></p>
                             <p class="card-text humid-display"></p>
                             <p class="card-text wind-display"></p>
-                            <div class="card-text uv-display">
+                            <div class="card-text uv-display d-none">
                                 <p class="float-left">UV rating: </p>
                                 <!-- UV index displayed in button like element -->
                                 <div class="float-left ml-1 btn-sm">
@@ -85,7 +89,7 @@
                     </div>
                 </div>
                 <!-- row for 5 day forecast -->
-                <div class="row" id="forecast" style="font-size: small;">
+                <div class="row d-none" id="forecast" style="font-size: small;">
                     <div class="container-fluid mx-2">
                         <!-- Forecast title section -->
                         <div class="row mx-1">
@@ -160,6 +164,22 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Button trigger modal -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button id="closeModal" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>

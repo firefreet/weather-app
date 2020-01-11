@@ -6,8 +6,17 @@ $(document).ready(function () {
     // if local data exists, set it to a variable
     if (localStorage.getItem("cities") !== null) {
         cities = JSON.parse(localStorage.getItem("cities"));
+        // show hidden elements
+        $(".d-none").removeClass("d-none")
         populateWeather(cities[0])
     };
+    // set cursor into the search text box
+    $('#searchCity').focus()
+
+    // set focus to close button when modal pops up on errors
+    $("#modal").on('shown.bs.modal',function(){
+        $("#closeModal").focus()
+    })
 
     // on page load, call function to display previous list of cities searched
     populateCities();
@@ -77,21 +86,23 @@ $(document).ready(function () {
             url: currentDataUrl,
             method: "GET",
             // if call fails, alert user with the error
-            error: function(xhr,y){
-                alert("Error: " + xhr.responseJSON.message)
-                },
+            error: function (xhr, y) {
+                $(".modal-body").text("Error! : " + xhr.responseJSON.message)
+                $("#modal").modal('toggle')
+            },
             // when call succeeds, do...
             success: function (resp) {
+                $("#forecast, .uv-display").removeClass("d-none")
                 // get longituted and latitude coords to call UV index api
                 uvDataUrl = uvDataUrl + "&lat=" + resp.coord.lat + "&lon=" + resp.coord.lon
                 // if city is already in list of previous cities, move it to the top of the array/list
                 // console.log($.inArray(normalCity,cities))
-                if($.inArray(normalCity,cities) !== -1) {
-                    cities.splice($.inArray(normalCity,cities),1);
+                if ($.inArray(normalCity, cities) !== -1) {
+                    cities.splice($.inArray(normalCity, cities), 1);
                     cities.unshift(normalCity);
-                } 
+                }
                 // other wise just put it at the top of the list
-                else {cities.unshift(normalCity)}
+                else { cities.unshift(normalCity) }
                 // cap the list at 10 entries
                 cities = cities.slice(0, 10);
                 // save the list to local storageu
@@ -116,20 +127,20 @@ $(document).ready(function () {
                 $.ajax({
                     url: uvDataUrl,
                     method: "GET"
-                }).then(function(resp) {
+                }).then(function (resp) {
                     // get UV value
                     var uv = resp.value
                     // set string for CSS to apply color based on value of UV on scale
                     var color = "background-color: "
-                    if(uv < 3) {color += "green; color: white;"} 
-                    else if (uv < 6) {color += "yellow; color: black;"}
-                    else if (uv < 8) {color += "orange; color: white"}
-                    else if (uv < 11) {color += "red; color: white;"}
-                    else {color += "purple; color: white;"}
+                    if (uv < 3) { color += "green; color: white;" }
+                    else if (uv < 6) { color += "yellow; color: black;" }
+                    else if (uv < 8) { color += "orange; color: white" }
+                    else if (uv < 11) { color += "red; color: white;" }
+                    else { color += "purple; color: white;" }
                     // display UV value and set CSS
-                    $(".uv-display>div").text(uv).attr("style",color)
+                    $(".uv-display>div").text(uv).attr("style", color)
                 })
-                
+
                 // call weather forecast API
                 $.ajax({
                     url: futureDataUrl,
@@ -140,12 +151,12 @@ $(document).ready(function () {
                     // loop 5 times to populate 5 day forecast elements
                     for (i = 0; i < 5; i++) {
                         // transform iterator to get the noon time forecasts from the array (@ 3, 11, 19, 27, 35)
-                        noon = 3 + (i*8)
+                        noon = 3 + (i * 8)
                         // string to select children of card-i
                         curCard = "#card-" + i + ">."
                         // populate the Date, Weather icon, Temperature, and Humidity
                         $(curCard + "date-display").text(days[noon].dt_txt.substr(0, 10)).hide().fadeIn()
-                        $(curCard + "thumb-display").attr("src","http://openweathermap.org/img/wn/" + days[noon].weather[0].icon + ".png").hide().fadeIn()
+                        $(curCard + "thumb-display").attr("src", "http://openweathermap.org/img/wn/" + days[noon].weather[0].icon + ".png").hide().fadeIn()
                         $(curCard + "temp-display").text("Temp: " + parseInt(days[noon].main.temp) + degreeSign).hide().fadeIn()
                         $(curCard + "humid-display").text("Humidity: " + days[noon].main.humidity + " %").hide().fadeIn()
                     }
@@ -153,17 +164,17 @@ $(document).ready(function () {
             }
         })
     }
-// function to title case strings
+    // function to title case strings
     function normalCase(string) {
         // splits strings into array of seperate words
         var words = string.split(" ")
         // goes through each word
-        words.forEach(function(item,index,array){
+        words.forEach(function (item, index, array) {
             // capitalize first letter
-            array[index] = array[index].substr(0,1).toUpperCase() + array[index].substr(1,array[index].length - 1) 
-            for(var iter = 1; iter < array[index].length; iter++) {
+            array[index] = array[index].substr(0, 1).toUpperCase() + array[index].substr(1, array[index].length - 1)
+            for (var iter = 1; iter < array[index].length; iter++) {
                 // lower case all other letters
-                array[index] = array[index].substr(0,iter) + array[index].substr(iter,1).toLowerCase() + array[index].substr(iter + 1,array[index].length)
+                array[index] = array[index].substr(0, iter) + array[index].substr(iter, 1).toLowerCase() + array[index].substr(iter + 1, array[index].length)
             }
         })
         // put words back into one string
