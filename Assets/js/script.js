@@ -42,7 +42,7 @@ $(document).ready(function () {
         if (event) {
             event.preventDefault();
         }
-        // api to get coords
+        // api to get local coords
         navigator.geolocation.getCurrentPosition(function success(pos) {
             var coords = pos.coords;
             latitude = coords.latitude;
@@ -104,14 +104,18 @@ $(document).ready(function () {
         var currentDataUrl = "https://api.openweathermap.org/data/2.5/weather?appid=489be95ab09e31557d4086ee27619db6&units=imperial&";
         var futureDataUrl = "https://api.openweathermap.org/data/2.5/forecast?appid=489be95ab09e31557d4086ee27619db6&units=imperial&";
         normalCity = ""
+        // if function was passed a city string value...
         if (city) {
+            // string value will be transformed to Title Casing and urls updated to use it
             normalCity = normalCase(city);
             currentDataUrl += "q=" + city;
             futureDataUrl += "q=" + city;
         } else {
+            // otherwise, urls updated to use latitude and longitude
             currentDataUrl += "lat=" + lat + "&lon=" + lon;
             futureDataUrl += "lat=" + lat + "&lon=" + lon;
         }
+        // base url for UVIndex api call
         var uvDataUrl = "https://api.openweathermap.org/data/2.5/uvi?appid=489be95ab09e31557d4086ee27619db6";
         // string for 'degree' sign
         var degreeSign = " " + String.fromCharCode(176) + "F";
